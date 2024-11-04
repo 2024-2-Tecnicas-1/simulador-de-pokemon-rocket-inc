@@ -1,4 +1,4 @@
-package simulador.pokemon;
+package BusinessLogic;
 
 public enum TipoPokemon {
     FUEGO,

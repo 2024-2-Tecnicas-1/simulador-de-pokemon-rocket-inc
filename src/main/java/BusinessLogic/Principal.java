@@ -1,4 +1,4 @@
-package simulador;
+package BusinessLogic;
 
 public class Principal {
     public static void main(String[] args) {

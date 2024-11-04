@@ -1,5 +1,12 @@
-package simulador.pokemon;
-public abstract class Pokemon {
+package BusinessLogic;
+
+import java.io.Serializable;
+
+/**
+ *
+ * @author Morning Star
+ */
+public abstract class Pokemon implements Serializable {
 
     private String nombre;
     private int salud;
