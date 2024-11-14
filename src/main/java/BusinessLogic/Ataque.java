@@ -1,6 +1,6 @@
 
 package BusinessLogic;
 
-public class ListaAtaques {
+public class Ataque {
     
 }
