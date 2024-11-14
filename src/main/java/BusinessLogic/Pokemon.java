@@ -2,10 +2,6 @@ package BusinessLogic;
 
 import java.io.Serializable;
 
-/**
- *
- * @author Morning Star
- */
 public abstract class Pokemon implements Serializable {
 
     private String nombre;
