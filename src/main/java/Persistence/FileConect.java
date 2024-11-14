@@ -1,4 +1,3 @@
-
 package Persistence;
 
 import java.io.File;
@@ -8,10 +7,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
-/**
- *
- * @author Morning Star
- */
+
 public class FileConect {
     public static void guardar(Object objeto, String nombreArchivo){
         File file = new File("datos/" + nombreArchivo);
