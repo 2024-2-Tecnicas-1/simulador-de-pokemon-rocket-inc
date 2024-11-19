@@ -1,5 +1,39 @@
 package BusinessLogic;
-
 public class Batalla {
-    // TODO: Aquí va tu código
+    private Pokemon pokemon1;
+    private Pokemon pokemon2;
+
+    public Batalla(Pokemon pokemon1, Pokemon pokemon2) {
+        if (pokemon1 == null || pokemon2 == null) {
+            
+        }
+        this.pokemon1 = pokemon1;
+        this.pokemon2 = pokemon2;
+    }
+
+    public void iniciarBatalla() {
+        
+        
+        while (pokemon1.getSalud() > 0 && pokemon2.getSalud() > 0) {
+            realizarAtaque(pokemon1, pokemon2);
+            if (pokemon2.getSalud() <= 0) {
+                
+                break;
+            }
+            
+            realizarAtaque(pokemon2, pokemon1);
+            if (pokemon1.getSalud() <= 0) {
+                
+                break;
+            }
+        }
+    }
+
+    private void realizarAtaque(Pokemon atacante, Pokemon defensor) {
+        int daño = atacante.atacar(defensor);
+        defensor.recibirDaño(daño);
+        System.out.println(atacante.getNombre() + " ataca a " + defensor.getNombre() + " y causa " + daño + " puntos de daño.");
+        System.out.println(defensor.getNombre() + " ahora tiene " + defensor.getSalud() + " puntos de salud.");
+    }
 }
+
