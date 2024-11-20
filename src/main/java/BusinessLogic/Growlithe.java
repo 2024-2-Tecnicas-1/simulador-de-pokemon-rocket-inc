@@ -24,15 +24,17 @@ public class Growlithe extends Pokemon {
     }
 
     @Override
-    public void atacar(int indiceAtaque, Pokemon defensor) {
-        if (indiceAtaque < 0 || indiceAtaque >= ataques.size()) {
-            System.out.println("Índice de ataque no válido.");
-            return; 
-        }
-
-        Ataque ataqueSeleccionado = ataques.get(indiceAtaque);
-        ataqueSeleccionado.aplicarAtaque(defensor);
+public int atacar(int indiceAtaque, Pokemon defensor) {
+    if (indiceAtaque < 0 || indiceAtaque >= ataques.size()) {
+        System.out.println("Índice de ataque no válido.");
+        return 0; 
     }
+
+    int daño = ataques.get(indiceAtaque).calcularDaño(); 
+    defensor.recibirDaño(daño);
+
+    return daño; 
+}
 
     @Override
     public void entrenar() {
