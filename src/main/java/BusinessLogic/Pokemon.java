@@ -44,7 +44,7 @@ public abstract class Pokemon {
             vida = 0; 
         }
     }
-    public abstract int atacar(Pokemon defensor);
+    public abstract int atacar(int indiceAtaque, Pokemon defensor);
     public abstract void entrenar();
 
     public void mostrarEfectoDelEstado() {

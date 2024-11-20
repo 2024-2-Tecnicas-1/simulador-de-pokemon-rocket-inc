@@ -30,7 +30,8 @@ public class Batalla {
     }
 
     private void realizarAtaque(Pokemon atacante, Pokemon defensor) {
-        int daño = atacante.atacar(defensor);
+        int indiceAtaque = 0; 
+        int daño = atacante.atacar(indiceAtaque, defensor);
         defensor.recibirDaño(daño);
         System.out.println(atacante.getNombre() + " ataca a " + defensor.getNombre() + " y causa " + daño + " puntos de daño.");
         System.out.println(defensor.getNombre() + " ahora tiene " + defensor.getVida() + " puntos de salud.");
