@@ -61,7 +61,7 @@ public enum TipoPokemon {
                     case VOLADOR:
                         return 2.0;
                     case TIERRA:
-                        return 0.0; // No afecta
+                        return 0.0;
                     case ELECTRICO:
                         return 0.5;
                     default:

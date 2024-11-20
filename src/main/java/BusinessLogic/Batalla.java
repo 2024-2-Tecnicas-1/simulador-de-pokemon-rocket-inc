@@ -14,15 +14,15 @@ public class Batalla {
     public void iniciarBatalla() {
         
         
-        while (pokemon1.getSalud() > 0 && pokemon2.getSalud() > 0) {
+        while (pokemon1.getVida() > 0 && pokemon2.getVida() > 0) {
             realizarAtaque(pokemon1, pokemon2);
-            if (pokemon2.getSalud() <= 0) {
+            if (pokemon2.getVida() <= 0) {
                 
                 break;
             }
             
             realizarAtaque(pokemon2, pokemon1);
-            if (pokemon1.getSalud() <= 0) {
+            if (pokemon1.getVida() <= 0) {
                 
                 break;
             }
@@ -33,7 +33,7 @@ public class Batalla {
         int daño = atacante.atacar(defensor);
         defensor.recibirDaño(daño);
         System.out.println(atacante.getNombre() + " ataca a " + defensor.getNombre() + " y causa " + daño + " puntos de daño.");
-        System.out.println(defensor.getNombre() + " ahora tiene " + defensor.getSalud() + " puntos de salud.");
+        System.out.println(defensor.getNombre() + " ahora tiene " + defensor.getVida() + " puntos de salud.");
     }
 }
 

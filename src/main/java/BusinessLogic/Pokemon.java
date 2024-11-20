@@ -1,99 +1,78 @@
 package BusinessLogic;
 
-import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
-
-public abstract class Pokemon implements Serializable {
-
+public abstract class Pokemon {
     private String nombre;
-    private int salud;
+    private TipoPokemon tipo;
+    private EstadoPokemon estadoActual;
+    private int vida;
     private int puntosAtaque;
-    private Set<EstadoPokemon> estados;
 
-    public Pokemon(String nombre, int salud, int puntosAtaque) {
+    public Pokemon(String nombre, TipoPokemon tipo, int vida, int puntosAtaque) {
         this.nombre = nombre;
-        this.salud = salud;
+        this.tipo = tipo;
+        this.vida = vida;
         this.puntosAtaque = puntosAtaque;
-        this.estados = new HashSet<>();
+        this.estadoActual = EstadoPokemon.NORMAL;
     }
 
     public String getNombre() {
         return nombre;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public TipoPokemon getTipo() {
+        return tipo;
     }
 
-    public int getSalud() {
-        return salud;
-    }
-
-    public void setSalud(int salud) {
-        if (salud < 0) {
-            this.salud = 0;
-        } else {
-            this.salud = salud;
-        }
+    public int getVida() {
+        return vida;
     }
 
     public int getPuntosAtaque() {
         return puntosAtaque;
     }
 
-    public void setPuntosAtaque(int puntosAtaque) {
-        if (puntosAtaque < 0) {
-            System.out.println("Los puntos de ataque no pueden ser negativos.");
-        } else {
-            this.puntosAtaque = puntosAtaque;
+    public EstadoPokemon getEstadoActual() {
+        return estadoActual;
+    }
+
+    public void aplicarEstado(EstadoPokemon estado) {
+        this.estadoActual = estado;
+    }
+    public void recibirDaño(int daño) {
+        vida -= daño;
+        if (vida < 0) {
+            vida = 0; 
         }
     }
-
-    public void agregarEstado(EstadoPokemon estado) {
-        this.estados.add(estado);
-    }
-
-    public void eliminarEstado(EstadoPokemon estado) {
-        this.estados.remove(estado);
-    }
-
-    public boolean tieneEstado(EstadoPokemon estado) {
-        return this.estados.contains(estado);
-    }
-
-    public Set<EstadoPokemon> getEstados() {
-        return this.estados;
-    }
-
-    public abstract int atacar(Pokemon oponente);
-
-    public abstract void recibirDaño(int daño);
-
+    public abstract void atacar(int indiceAtaque);
     public abstract void entrenar();
 
-    public void aplicarEfectosDeEstados() {
-        if (tieneEstado(EstadoPokemon.QUEMADO)) {
-
-            int dañoQuemadura = this.salud / 16;
-            this.salud -= dañoQuemadura;
-
+    public void mostrarEfectoDelEstado() {
+        if (estadoActual == EstadoPokemon.NORMAL) {
+            return;
         }
-
-        if (tieneEstado(EstadoPokemon.VENENO)) {
-
-            int dañoVeneno = this.salud / 8;
-            this.salud -= dañoVeneno;
-
+        switch (estadoActual) {
+            case PARALIZADO:
+                puntosAtaque = (int) (puntosAtaque * 0.5);
+                break;
+            case QUEMADO:
+                recibirDaño(estadoActual.getDañoPorTurno());
+                break;
+            case CONGELADO:
+                break;
+            case VENENO:
+                recibirDaño(estadoActual.getDañoPorTurno());
+                break;
+            case DORMIDO:
+                break;
+            case CONFUSO:
+                break;
+            case FURIA:
+                puntosAtaque = (int) (puntosAtaque * estadoActual.getModificadorAtaque());
+                break;
+            default:
+                break;
         }
-
-        if (tieneEstado(EstadoPokemon.PARALIZADO)) {
-
-        }
-
-        if (tieneEstado(EstadoPokemon.DORMIDO)) {
-
-        }
-
     }
 }
+
