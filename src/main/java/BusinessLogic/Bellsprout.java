@@ -44,6 +44,7 @@ public class Bellsprout extends Pokemon {
         System.out.println(getNombre() + " ha aumentado sus puntos de ataque a " + nuevosPuntosAtaque);
     }
 
+    @Override
     public List<Ataque> getAtaques() {
         return ataques;
     }
