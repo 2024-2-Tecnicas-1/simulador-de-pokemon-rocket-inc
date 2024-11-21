@@ -1,6 +1,9 @@
 package Consola;
 
 import java.util.Scanner;
+import Persistence.FileConect;
+import Persistence.FileControl;
+import BusinessLogic.Entrenador;
 import BusinessLogic.Pokemon;
 import BusinessLogic.Batalla;
 import BusinessLogic.Entrenador;
@@ -14,10 +17,14 @@ import BusinessLogic.Psyduck;
 import BusinessLogic.Voltorb;
 import BusinessLogic.Zubat;
 import BusinessLogic.Tentacool;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Principal {
 
     private static Scanner sc = new Scanner(System.in);
+    private static List<Entrenador> entrenadores = new ArrayList<>();
+    private static List<Pokemon> pokemones = new ArrayList<>();
 
     public static void main(String[] args) {
         boolean salir = false;
@@ -109,8 +116,14 @@ public class Principal {
     }
 
     private static void verListaEntrenadores() {
-
-        System.out.println("Mostrando entrenadores");
+        if (entrenadores.isEmpty()) {
+            System.out.println("No hay entrenadores registrados.");
+        } else {
+            System.out.println("Lista de entrenadores:");
+            for (int i = 0; i < entrenadores.size(); i++) {
+                System.out.println((i + 1) + ". " + entrenadores.get(i).getNombre());
+            }
+        }
     }
 
     private static void seleccionarEntrenador() {
@@ -154,88 +167,87 @@ public class Principal {
         System.out.println("Mostrando lista de Pokémon");
     }
 
-private static void registrarPokemon() {
-    System.out.println("\nAgregar Pokemones:");
-    System.out.println("\n1) Growlithe");
-    System.out.println("\n2) Psyduck");
-    System.out.println("\n3) Zubat");
-    System.out.println("\n4) Bellsprout");
-    System.out.println("\n5) Voltorb");
-    System.out.println("\n6) Exeggcute");
-    System.out.println("\n7) Onix");
-    System.out.println("\n8) Farfetcht'd");
-    System.out.println("\n9) Hitmonlee");
-    System.out.println("\n10) Tentacool");
+    private static void registrarPokemon() {
+        System.out.println("\nAgregar Pokemones:");
+        System.out.println("\n1) Growlithe");
+        System.out.println("\n2) Psyduck");
+        System.out.println("\n3) Zubat");
+        System.out.println("\n4) Bellsprout");
+        System.out.println("\n5) Voltorb");
+        System.out.println("\n6) Exeggcute");
+        System.out.println("\n7) Onix");
+        System.out.println("\n8) Farfetcht'd");
+        System.out.println("\n9) Hitmonlee");
+        System.out.println("\n10) Tentacool");
 
-    boolean regresar = false;
+        boolean regresar = false;
 
-    while (!regresar) {
-        mostrarSubmenuPokemon();
-        int opcion = leerOpcion();
+        while (!regresar) {
+            mostrarSubmenuPokemon();
+            int opcion = leerOpcion();
 
-        switch (opcion) {
-            case 1: {
-                String nombre = null;
-                Growlithe growlithe = new Growlithe(nombre);
-                break;
-            }
-            case 2: {
-                String nombre = null;
-                Psyduck psyduck = new Psyduck(nombre);
-                break;
-            }
-            case 3: {
-                String nombre = null;
-                Zubat zubat = new Zubat(nombre);
-                break;
-            }
-            case 4: {
-                String nombre = null;
-                Bellsprout bellsprout = new Bellsprout(nombre);
-                break;
-            }
-            case 5: {
-                String nombre = null;
-                Voltorb voltorb = new Voltorb(nombre);
-                break;
-            }
-            case 6: {
-                String nombre = null;
-                Exeggcute exeggcute = new Exeggcute(nombre);
-                break;
-            }
-            case 7: {
-                String nombre = null;
-                Onix onix = new Onix(nombre);
-                break;
-            }
-            case 8: {
-                String nombre = null;
-                Farfetchd farfetchd = new Farfetchd(nombre);
-                break;
-            }
-            case 9: {
-                String nombre = null;
-                Hitmonlee hitmonlee = new Hitmonlee(nombre);
-                break;
-            }
-            case 10: {
-                String nombre = null;
-                Tentacool tentacool = new Tentacool(nombre);
-                break;
-            }
-            case 11: {
-                regresar = true;
-                break;
-            }
-            default: {
-                System.out.println("Opción inválida. Intenta de nuevo.");
-                break;
+            switch (opcion) {
+                case 1: {
+                    String nombre = null;
+                    Growlithe growlithe = new Growlithe(nombre);
+                    break;
+                }
+                case 2: {
+                    String nombre = null;
+                    Psyduck psyduck = new Psyduck(nombre);
+                    break;
+                }
+                case 3: {
+                    String nombre = null;
+                    Zubat zubat = new Zubat(nombre);
+                    break;
+                }
+                case 4: {
+                    String nombre = null;
+                    Bellsprout bellsprout = new Bellsprout(nombre);
+                    break;
+                }
+                case 5: {
+                    String nombre = null;
+                    Voltorb voltorb = new Voltorb(nombre);
+                    break;
+                }
+                case 6: {
+                    String nombre = null;
+                    Exeggcute exeggcute = new Exeggcute(nombre);
+                    break;
+                }
+                case 7: {
+                    String nombre = null;
+                    Onix onix = new Onix(nombre);
+                    break;
+                }
+                case 8: {
+                    String nombre = null;
+                    Farfetchd farfetchd = new Farfetchd(nombre);
+                    break;
+                }
+                case 9: {
+                    String nombre = null;
+                    Hitmonlee hitmonlee = new Hitmonlee(nombre);
+                    break;
+                }
+                case 10: {
+                    String nombre = null;
+                    Tentacool tentacool = new Tentacool(nombre);
+                    break;
+                }
+                case 11: {
+                    regresar = true;
+                    break;
+                }
+                default: {
+                    System.out.println("Opción inválida. Intenta de nuevo.");
+                    break;
+                }
             }
         }
     }
-}
-
 
     private static void iniciarBatalla() {
         System.out.println("Iniciando batalla!");
