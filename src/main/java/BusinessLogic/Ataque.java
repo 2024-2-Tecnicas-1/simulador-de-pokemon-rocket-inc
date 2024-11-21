@@ -1,7 +1,5 @@
 package BusinessLogic;
 
-import java.util.Random;
-
 public class Ataque {
     private String nombre;
     private TipoPokemon tipo;
