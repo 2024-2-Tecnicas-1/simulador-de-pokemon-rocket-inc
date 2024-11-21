@@ -46,6 +46,11 @@ public class Psyduck extends Pokemon {
         System.out.println(getNombre() + " ha aumentado sus puntos de ataque a " + nuevosPuntosAtaque);
     }
 
+    /**
+     *
+     * @return
+     */
+    @Override
     public List<Ataque> getAtaques() {
         return ataques;
     }
