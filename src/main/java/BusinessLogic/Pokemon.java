@@ -1,5 +1,8 @@
 package BusinessLogic;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public abstract class Pokemon {
 
     private String nombre;
@@ -7,7 +10,7 @@ public abstract class Pokemon {
     private EstadoPokemon estadoActual;
     private int vida;
     private int puntosAtaque;
-
+    private List<Ataque> ataques; // Nuevo atributo para los ataques
 
     public Pokemon(String nombre, TipoPokemon tipo, int vida, int puntosAtaque) {
         this.nombre = nombre;
@@ -15,6 +18,7 @@ public abstract class Pokemon {
         this.vida = vida;
         this.puntosAtaque = puntosAtaque;
         this.estadoActual = EstadoPokemon.NORMAL;
+        this.ataques = new ArrayList<>(); // Inicializar la lista de ataques
     }
 
     public String getNombre() {
@@ -29,9 +33,10 @@ public abstract class Pokemon {
         return vida;
     }
 
-    public int setVida(int vida) {
-        return vida;
+    public void setVida(int vida) {
+        this.vida = vida;
     }
+
     public int getPuntosAtaque() {
         return puntosAtaque;
     }
@@ -42,6 +47,18 @@ public abstract class Pokemon {
 
     public void aplicarEstado(EstadoPokemon estado) {
         this.estadoActual = estado;
+    }
+
+    public List<Ataque> getAtaques() { // Método agregado
+        return ataques;
+    }
+
+    public void agregarAtaque(Ataque ataque) { // Método para añadir ataques
+        ataques.add(ataque);
+    }
+
+    public boolean tieneEstado(EstadoPokemon estado) { // Método agregado
+        return this.estadoActual == estado;
     }
 
     public void recibirDaño(int daño) {
@@ -83,3 +100,4 @@ public abstract class Pokemon {
         }
     }
 }
+

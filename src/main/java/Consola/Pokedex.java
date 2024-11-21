@@ -11,7 +11,6 @@ public class Pokedex extends javax.swing.JFrame {
 
     private int currentPokemonIndex = 0;
 
-    // Nombres y tipos de los nuevos Pokémon
     private final String[] pokemons = {
         "Growlithe", "Psyduck", "Bellsprout", "Voltorb", 
         "Exeggcute", "Onix", "Zubat", "Farfetch'd", 
@@ -44,7 +43,7 @@ public class Pokedex extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Pokedex");
 
-        jPanel1.setBackground(new java.awt.Color(255, 102, 102)); // Fondo de la ventana
+        jPanel1.setBackground(new java.awt.Color(255, 102, 102)); 
 
         pnlImagen.setPreferredSize(new java.awt.Dimension(350, 450));
 
@@ -168,7 +167,6 @@ public class Pokedex extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(() -> new Pokedex().setVisible(true));
     }
 
-    // Variables declaration
     private javax.swing.JButton btnAnterior;
     private javax.swing.JButton btnSiguiente;
     private javax.swing.JPanel jPanel1;
@@ -176,6 +174,6 @@ public class Pokedex extends javax.swing.JFrame {
     private javax.swing.JLabel lblNombrePokemon;
     private javax.swing.JLabel lblTipoPokemon;
     private javax.swing.JPanel pnlImagen;
-    // End of variables declaration
+
 }
 
