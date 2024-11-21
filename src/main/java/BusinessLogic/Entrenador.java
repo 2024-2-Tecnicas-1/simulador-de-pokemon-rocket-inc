@@ -15,7 +15,7 @@ public class Entrenador implements Serializable {
         this.pokemones = new ArrayList<>();
     }
 
-    // Agregar un Pokémon al equipo
+    
     public void agregarPokemon(Pokemon pokemon) {
         if (pokemon != null) {
             pokemones.add(pokemon);
@@ -25,7 +25,7 @@ public class Entrenador implements Serializable {
         }
     }
 
-    // Entrenar un Pokémon del equipo
+    
     public void entrenarPokemon(Pokemon pokemon) {
         if (pokemones.contains(pokemon)) {
             pokemon.entrenar(); // Se asume que el método entrenar está definido en la clase Pokemon
@@ -35,7 +35,7 @@ public class Entrenador implements Serializable {
         }
     }
 
-    // Mostrar los Pokémon del equipo
+    
     public void mostrarPokemones() {
         if (pokemones.isEmpty()) {
             System.out.println(nombre + " no tiene Pokémon en su equipo.");
@@ -48,7 +48,7 @@ public class Entrenador implements Serializable {
         }
     }
 
-    // Preparar un Pokémon para la batalla
+    
     public Pokemon prepararBatalla() {
         if (pokemones.isEmpty()) {
             System.out.println(nombre + " no tiene Pokémon disponibles para la batalla.");
@@ -57,7 +57,7 @@ public class Entrenador implements Serializable {
         return pokemones.get(0); // Devuelve el primer Pokémon como predeterminado
     }
 
-    // Getters y setters
+    
     public String getNombre() {
         return nombre;
     }
