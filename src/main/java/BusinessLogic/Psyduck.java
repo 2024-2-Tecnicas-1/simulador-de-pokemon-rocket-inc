@@ -3,43 +3,45 @@ package BusinessLogic;
 import java.util.List;
 import java.util.ArrayList;
 
-public class Growlithe extends Pokemon {
+public class Psyduck extends Pokemon {
 
-    private final List<Ataque> ataques;
+    private final List<Ataque> ataques; 
 
-    public Growlithe(String nombre) {
-        super(nombre, TipoPokemon.FUEGO, 55, 70);
+    public Psyduck(String nombre) {
+        super(nombre, TipoPokemon.PSIQUICO, 50, 52);
         ataques = new ArrayList<>();
-        cargarAtaques();
+        cargarAtaques(); 
     }
 
     private void cargarAtaques() {
-        Ataque llamarada = new Ataque("Llamarada", TipoPokemon.FUEGO, 50, EstadoPokemon.QUEMADO, 0.3);
-        Ataque gruñido = new Ataque("Gruñido", TipoPokemon.NORMAL, 0, EstadoPokemon.CONFUSO, 0.2);
-        Ataque mordisco = new Ataque("Mordisco", TipoPokemon.FUEGO, 40, EstadoPokemon.NORMAL, 0.1);
+        Ataque confusión = new Ataque("Confusión", TipoPokemon.PSIQUICO, 40, EstadoPokemon.CONFUSO, 0.3);
+        Ataque psíquico = new Ataque("Psíquico", TipoPokemon.PSIQUICO, 70, EstadoPokemon.NORMAL, 0.1);
+        Ataque agua = new Ataque("Hidro-pulso", TipoPokemon.AGUA, 50, EstadoPokemon.NORMAL, 0.2);
 
-        ataques.add(llamarada);
-        ataques.add(gruñido);
-        ataques.add(mordisco);
+        ataques.add(confusión);
+        ataques.add(psíquico);
+        ataques.add(agua);
     }
 
     @Override
     public int atacar(int indiceAtaque, Pokemon defensor) {
+
         if (indiceAtaque < 0 || indiceAtaque >= ataques.size()) {
             System.out.println("Índice de ataque no válido.");
-            return 0;
+            return 0; 
         }
 
-        int daño = ataques.get(indiceAtaque).calcularDaño();
+        int daño = ataques.get(indiceAtaque).calcularDaño(defensor.getTipo()); 
         defensor.recibirDaño(daño);
 
-        return daño;
+        return daño; 
     }
 
     @Override
     public void entrenar() {
         System.out.println(getNombre() + " está entrenando.");
-        int incremento = 6;
+
+        int incremento = 5;
         int nuevosPuntosAtaque = getPuntosAtaque() + incremento;
         System.out.println(getNombre() + " ha aumentado sus puntos de ataque a " + nuevosPuntosAtaque);
     }
@@ -48,3 +50,4 @@ public class Growlithe extends Pokemon {
         return ataques;
     }
 }
+

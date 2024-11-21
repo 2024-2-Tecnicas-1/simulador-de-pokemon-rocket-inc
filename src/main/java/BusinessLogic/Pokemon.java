@@ -1,11 +1,13 @@
 package BusinessLogic;
 
 public abstract class Pokemon {
+
     private String nombre;
     private TipoPokemon tipo;
     private EstadoPokemon estadoActual;
     private int vida;
     private int puntosAtaque;
+
 
     public Pokemon(String nombre, TipoPokemon tipo, int vida, int puntosAtaque) {
         this.nombre = nombre;
@@ -27,6 +29,9 @@ public abstract class Pokemon {
         return vida;
     }
 
+    public int setVida(int vida) {
+        return vida;
+    }
     public int getPuntosAtaque() {
         return puntosAtaque;
     }
@@ -38,13 +43,16 @@ public abstract class Pokemon {
     public void aplicarEstado(EstadoPokemon estado) {
         this.estadoActual = estado;
     }
+
     public void recibirDaño(int daño) {
         vida -= daño;
         if (vida < 0) {
-            vida = 0; 
+            vida = 0;
         }
     }
+
     public abstract int atacar(int indiceAtaque, Pokemon defensor);
+
     public abstract void entrenar();
 
     public void mostrarEfectoDelEstado() {
@@ -75,4 +83,3 @@ public abstract class Pokemon {
         }
     }
 }
-

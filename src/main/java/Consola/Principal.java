@@ -1,4 +1,4 @@
-package BusinessLogic;
+package Consola;
 
 import java.util.Scanner;
 
