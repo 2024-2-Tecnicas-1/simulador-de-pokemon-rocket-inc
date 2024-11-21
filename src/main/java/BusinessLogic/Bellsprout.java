@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public class Bellsprout extends Pokemon {
 
-    private final List<Ataque> ataques; 
+    private final List<Ataque> ataques;
 
     public Bellsprout(String nombre) {
         super(nombre, TipoPokemon.PLANTA, 50, 75);
@@ -23,16 +23,17 @@ public class Bellsprout extends Pokemon {
         ataques.add(zumbido);
         ataques.add(acido);
     }
+
     @Override
     public int atacar(int indiceAtaque, Pokemon defensor) {
         if (indiceAtaque < 0 || indiceAtaque >= ataques.size()) {
             System.out.println("Índice de ataque no válido.");
-            return 0; 
+            return 0;
         }
-        int daño = ataques.get(indiceAtaque).calcularDaño(); 
+        int daño = ataques.get(indiceAtaque).calcularDaño(defensor.getTipo());
         defensor.recibirDaño(daño);
 
-        return daño; 
+        return daño;
     }
 
     @Override
@@ -47,4 +48,3 @@ public class Bellsprout extends Pokemon {
         return ataques;
     }
 }
-

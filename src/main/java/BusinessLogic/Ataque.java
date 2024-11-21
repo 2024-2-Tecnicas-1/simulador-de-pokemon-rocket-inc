@@ -77,9 +77,5 @@ public class Ataque {
         }
         defensor.aplicarEstado(estado); 
     }
-
-    int calcularDaño() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
 }
 

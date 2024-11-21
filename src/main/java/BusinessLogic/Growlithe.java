@@ -29,8 +29,7 @@ public class Growlithe extends Pokemon {
             System.out.println("Índice de ataque no válido.");
             return 0;
         }
-
-        int daño = ataques.get(indiceAtaque).calcularDaño();
+        int daño = ataques.get(indiceAtaque).calcularDaño(defensor.getTipo());
         defensor.recibirDaño(daño);
 
         return daño;
