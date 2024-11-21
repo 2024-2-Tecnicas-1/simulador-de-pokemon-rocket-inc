@@ -1,9 +1,10 @@
 package BusinessLogic;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Pokemon {
+public abstract class Pokemon implements Serializable {
 
     private String nombre;
     private TipoPokemon tipo;
@@ -84,11 +85,13 @@ public abstract class Pokemon {
                 recibirDaño(estadoActual.getDañoPorTurno());
                 break;
             case CONGELADO:
+                System.out.println(nombre + " está congelado y no puede atacar.");
                 break;
             case VENENO:
                 recibirDaño(estadoActual.getDañoPorTurno());
                 break;
             case DORMIDO:
+                System.out.println(nombre + " está dormido y no puede atacar.");
                 break;
             case CONFUSO:
                 break;
