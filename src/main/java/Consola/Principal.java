@@ -1,6 +1,9 @@
 package Consola;
 
 import java.util.Scanner;
+import BusinessLogic.Pokemon;
+import BusinessLogic.Batalla;
+import BusinessLogic.Entrenador;
 
 public class Principal {
 
