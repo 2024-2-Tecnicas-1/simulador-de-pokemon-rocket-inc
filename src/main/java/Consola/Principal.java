@@ -125,6 +125,21 @@ public class Principal {
             }
         }
     }
+    private static void verListaPokemon() {
+    if (pokemones.isEmpty()) {
+        System.out.println("No hay Pokémones registrados.");
+    } else {
+        System.out.println("Lista de Pokémones:");
+        for (int i = 0; i < pokemones.size(); i++) {
+            Pokemon pokemon = pokemones.get(i);
+            if (pokemon != null) {
+                System.out.println((i + 1) + ". " + pokemon.getNombre());
+            } else {
+                System.out.println((i + 1) + "");
+            }
+        }
+    }
+}
 
     private static void seleccionarEntrenador() {
 
@@ -162,92 +177,75 @@ public class Principal {
         System.out.print("Elige una opción: ");
     }
 
-    private static void verListaPokemon() {
-
-        System.out.println("Mostrando lista de Pokémon");
-    }
+    
 
     private static void registrarPokemon() {
+    boolean regresar = false;
+
+    while (!regresar) {
         System.out.println("\nAgregar Pokemones:");
-        System.out.println("\n1) Growlithe");
-        System.out.println("\n2) Psyduck");
-        System.out.println("\n3) Zubat");
-        System.out.println("\n4) Bellsprout");
-        System.out.println("\n5) Voltorb");
-        System.out.println("\n6) Exeggcute");
-        System.out.println("\n7) Onix");
-        System.out.println("\n8) Farfetcht'd");
-        System.out.println("\n9) Hitmonlee");
-        System.out.println("\n10) Tentacool");
+        System.out.println("1) Growlithe");
+        System.out.println("2) Psyduck");
+        System.out.println("3) Zubat");
+        System.out.println("4) Bellsprout");
+        System.out.println("5) Voltorb");
+        System.out.println("6) Exeggcute");
+        System.out.println("7) Onix");
+        System.out.println("8) Farfetch'd");
+        System.out.println("9) Hitmonlee");
+        System.out.println("10) Tentacool");
+        System.out.println("11) Regresar al menú anterior");
+        System.out.print("Elige una opción: ");
 
-        boolean regresar = false;
+        int opcion = leerOpcion();
 
-        while (!regresar) {
-            mostrarSubmenuPokemon();
-            int opcion = leerOpcion();
+        Pokemon nuevoPokemon = null;
 
-            switch (opcion) {
-                case 1: {
-                    String nombre = null;
-                    Growlithe growlithe = new Growlithe(nombre);
-                    break;
-                }
-                case 2: {
-                    String nombre = null;
-                    Psyduck psyduck = new Psyduck(nombre);
-                    break;
-                }
-                case 3: {
-                    String nombre = null;
-                    Zubat zubat = new Zubat(nombre);
-                    break;
-                }
-                case 4: {
-                    String nombre = null;
-                    Bellsprout bellsprout = new Bellsprout(nombre);
-                    break;
-                }
-                case 5: {
-                    String nombre = null;
-                    Voltorb voltorb = new Voltorb(nombre);
-                    break;
-                }
-                case 6: {
-                    String nombre = null;
-                    Exeggcute exeggcute = new Exeggcute(nombre);
-                    break;
-                }
-                case 7: {
-                    String nombre = null;
-                    Onix onix = new Onix(nombre);
-                    break;
-                }
-                case 8: {
-                    String nombre = null;
-                    Farfetchd farfetchd = new Farfetchd(nombre);
-                    break;
-                }
-                case 9: {
-                    String nombre = null;
-                    Hitmonlee hitmonlee = new Hitmonlee(nombre);
-                    break;
-                }
-                case 10: {
-                    String nombre = null;
-                    Tentacool tentacool = new Tentacool(nombre);
-                    break;
-                }
-                case 11: {
-                    regresar = true;
-                    break;
-                }
-                default: {
-                    System.out.println("Opción inválida. Intenta de nuevo.");
-                    break;
-                }
-            }
+        switch (opcion) {
+            case 1:
+                nuevoPokemon = new Growlithe("Growlithe");
+                break;
+            case 2:
+                nuevoPokemon = new Psyduck("Psyduck");
+                break;
+            case 3:
+                nuevoPokemon = new Zubat("Zubat");
+                break;
+            case 4:
+                nuevoPokemon = new Bellsprout("Bellsprout");
+                break;
+            case 5:
+                nuevoPokemon = new Voltorb("Voltorb");
+                break;
+            case 6:
+                nuevoPokemon = new Exeggcute("Exeggcute");
+                break;
+            case 7:
+                nuevoPokemon = new Onix("Onix");
+                break;
+            case 8:
+                nuevoPokemon = new Farfetchd("Farfetch'd");
+                break;
+            case 9:
+                nuevoPokemon = new Hitmonlee("Hitmonlee");
+                break;
+            case 10:
+                nuevoPokemon = new Tentacool("Tentacool");
+                break;
+            case 11:
+                regresar = true;
+                break;
+            default:
+                System.out.println("Opción inválida. Intenta de nuevo.");
+        }
+
+        if (nuevoPokemon != null) {
+            pokemones.add(nuevoPokemon);
+            System.out.println("¡" + nuevoPokemon.getNombre() + " registrado exitosamente!");
         }
     }
+}
+
 
     private static void iniciarBatalla() {
         System.out.println("Iniciando batalla!");
